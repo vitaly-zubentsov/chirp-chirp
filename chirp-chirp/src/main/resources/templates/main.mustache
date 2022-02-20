@@ -1,9 +1,27 @@
+<!DOCTYPE HTML>
 <html>
 <head>
 	<Title>Main</Title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-    <div>{{some}}</div>
+	<div>
+		<form method="POST">
+			<input type="text" name="text" placeholder="input text"/>
+			<input type="text" name="tag" placeholder="input tag"/>
+			<button type="submit">Add</button>
+		
+		</form>
+	</div>
+
+    <div>Message List</div>
+    
+    {{#messages}}
+  		<div> 
+  			<b>{{id}}</b>
+  			<span>{{text}}</span>
+  			<i>{{tag}} </i>
+  		</div>
+	{{/messages }}
 </body>
 </html>
