@@ -1,5 +1,6 @@
 package com.zubentsov.chirpchirp.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,22 @@ public class GreetingController {
 		messageRepo.save(message);
 
 		Iterable<Message> messages = messageRepo.findAll();
+		model.put("messages", messages);
+
+		return "main";
+	}
+
+	@PostMapping("filter")
+	public String findByTag(@RequestParam String filter, Map<String, Object> model) {
+
+		Iterable<Message> messages;
+
+		if ((filter != null) && !(filter.isEmpty())) {
+			messages = messageRepo.findByTag(filter);
+		} else {
+			messages = messageRepo.findAll();
+		}
+
 		model.put("messages", messages);
 
 		return "main";
