@@ -4,7 +4,11 @@
 <title>Login</title>
 </head>
 <body>
-	<form action="/login" method="POST">
+	Add new user
+	{{#message}}
+		{{message}}
+	{{/message}}
+	<form action="/registration" method="POST">
 		<div>
 			<label> User Name : <input type="text" name="username" />
 			</label>
@@ -18,6 +22,5 @@
 			<input type="submit" value="Sign In" />
 		</div>
 	</form>
-	<a href="/registration">Add new user</a>
 </body>
 </html>

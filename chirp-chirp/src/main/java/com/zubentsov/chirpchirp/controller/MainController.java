@@ -1,9 +1,7 @@
 package com.zubentsov.chirpchirp.controller;
 
-import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +11,13 @@ import com.zubentsov.chirpchirp.domen.Message;
 import com.zubentsov.chirpchirp.repos.MessageRepo;
 
 @Controller
-public class GreetingController {
+public class MainController {
 
-	@Autowired
 	MessageRepo messageRepo;
+
+	MainController(MessageRepo messageRepo) {
+		this.messageRepo = messageRepo;
+	}
 
 	@GetMapping("/")
 	public String greetings(Map<String, Object> model) {
@@ -45,7 +46,7 @@ public class GreetingController {
 		return "main";
 	}
 
-	@PostMapping("/main/filter")
+	@PostMapping("/filter")
 	public String findByTag(@RequestParam String filter, Map<String, Object> model) {
 
 		Iterable<Message> messages;
