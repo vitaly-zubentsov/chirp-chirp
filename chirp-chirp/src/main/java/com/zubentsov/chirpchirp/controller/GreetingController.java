@@ -18,16 +18,13 @@ public class GreetingController {
 	@Autowired
 	MessageRepo messageRepo;
 
-	@GetMapping("/greeting")
-	public String greetings(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-			Map<String, Object> model) {
-
-		model.put("name", name);
+	@GetMapping("/")
+	public String greetings(Map<String, Object> model) {
 
 		return "greeting";
 	}
 
-	@GetMapping
+	@GetMapping("/main")
 	public String main(Map<String, Object> model) {
 
 		Iterable<Message> messages = messageRepo.findAll();
@@ -36,7 +33,7 @@ public class GreetingController {
 		return "main";
 	}
 
-	@PostMapping
+	@PostMapping("/main")
 	public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
 
 		Message message = new Message(text, tag);
@@ -48,7 +45,7 @@ public class GreetingController {
 		return "main";
 	}
 
-	@PostMapping("filter")
+	@PostMapping("/main/filter")
 	public String findByTag(@RequestParam String filter, Map<String, Object> model) {
 
 		Iterable<Message> messages;

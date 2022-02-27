@@ -6,9 +6,16 @@
 </head>
 <body>
 	<div>
-		<form method="POST">
-			<input type="text" name="text" placeholder="input text" /> <input
-				type="text" name="tag" placeholder="input tag" />
+		<form action="/logout" method="POST">
+			<input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+			<input type="submit" value="Sign Out"/>
+		</form>
+	</div>
+	<div>
+		<form method="POST" action="/main">
+			<input type="text" name="text" placeholder="input text" /> 
+			<input type="text" name="tag" placeholder="input tag" />
+			<input type="hidden" name="_csrf" value="{{_csrf.token}}" />
 			<button type="submit">Add</button>
 
 		</form>
@@ -16,10 +23,10 @@
 
 	<div>Message List</div>
 
-	<form method="POST" action="filter">
+	<form method="POST" action="main/filter">
 		<input type="text" name="filter" placeholder="find by tag" />
+		<input type="hidden" name="_csrf" value="{{_csrf.token}}" />
 		<button type="submit">Find</button>
-
 	</form>
 
 	{{#messages}}
