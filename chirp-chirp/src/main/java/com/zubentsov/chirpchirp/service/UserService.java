@@ -10,15 +10,15 @@ import com.zubentsov.chirpchirp.repos.UserRepo;
 @Service
 public class UserService implements UserDetailsService {
 
-	private final UserRepo userRepo;
+    private final UserRepo userRepo;
 
-	public UserService(UserRepo userRepo) {
-		this.userRepo = userRepo;
-	}
+    public UserService(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return userRepo.findByUsername(username);
-	}
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepo.findByUsername(username);
+    }
 
 }
