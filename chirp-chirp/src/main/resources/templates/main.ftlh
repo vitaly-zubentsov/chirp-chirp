@@ -15,9 +15,8 @@
 
     <div>Message List</div>
 
-    <form method="POST" action="/filter">
-        <input type="text" name="filter" placeholder="find by tag"/>
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <form method="GET" action="/main">
+        <input type="text" name="filter" value="${filter}" />
         <button type="submit">Find</button>
     </form>
 
