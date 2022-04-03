@@ -163,5 +163,8 @@ $RECYCLE.BIN/
 #Mac
 .DS_Store
 
+#Uploads
+uploads/
+
 
 # End of https://www.gitignore.io/api/git,java,maven,eclipse,windows
